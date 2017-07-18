@@ -85,8 +85,10 @@ if [ "$#" -lt 2 ]; then
 fi
 
 keepnote_running=$(ps aufx | grep keepnote | grep -v "grep keepnote" | awk '{print $2}')
-if [ -n $keepnote_running ] ; 
-then 
+if [ -z $keepnote_running ] ; 
+then
+    echo "keepnote not running..."
+else
     echo "Killing keepnote..."
     kill -9 $keepnote_running
 fi
